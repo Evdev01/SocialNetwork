@@ -10,18 +10,22 @@
     background-color: black;
 }
 
-.sidebar li {
-    list-style: none;
-    padding: 5px 0;
-    margin: 0;
-    color: white;
-}
-
-.sidebarUl {
+.sidebarList {
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
-    padding: 0;
-    margin: 0;
+}
+
+.sidebarItem {
+    margin: 3px 0;
+}
+
+.sidebarItem a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebarItem a.activeLink {
+    font-weight: bold;
 }
