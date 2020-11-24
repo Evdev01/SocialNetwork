@@ -25,3 +25,8 @@
 .headerLogin {
     color: white;
 }
+
+.headerLogin a {
+    color: white;
+    text-decoration: none;
+}

@@ -1,6 +1,6 @@
 import styles from './UserBlock.module.css'
 import React from 'react'
-import userPhoto from '../../images/user.jpg'
+import userPhoto from '../../../../src/assets/images/user.jpg'
 
 function UserAvatarBlock() {
 

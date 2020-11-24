@@ -9,3 +9,13 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.content {
+    margin-top: 15px;
+    width: 80%;
+    height: auto;
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+}
+

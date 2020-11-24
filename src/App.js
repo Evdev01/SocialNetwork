@@ -1,6 +1,6 @@
 import React from 'react'
-import './App.css';
-import BasicStructure from "./components/BasicStructure/BasicStructure";
+import './App.css'
+import BasicStructure from './components/BasicStructure/BasicStructure'
 
 function App() {
 
@@ -8,9 +8,9 @@ function App() {
         <div>
             <BasicStructure/>
         </div>
-    );
+    )
 }
 
-export default App;
+export default App
 
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "./Header.module.css";
+import {NavLink} from 'react-router-dom'
 
 function Header() {
 
@@ -7,10 +8,10 @@ function Header() {
             <div className={styles.header}>
                 <div className={styles.headerInner}>
                     <div className={styles.headerLogo}>
-                        <h1>VK version 1000</h1>
+                        <h1>VKK</h1>
                     </div>
                     <div className={styles.headerLogin}>
-                        <h1>Войти</h1>
+                        <NavLink to={'/login'}>Login</NavLink>
                     </div>
                 </div>
             </div>
