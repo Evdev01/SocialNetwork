@@ -1,14 +1,16 @@
 import React from 'react'
 import './App.css';
-import BaseCss from "./components/BaseCss/BaseCss";
+import BasicStructure from "./components/BasicStructure/BasicStructure";
 
 function App() {
 
     return (
         <div>
-            <BaseCss/>
+            <BasicStructure/>
         </div>
     );
 }
 
 export default App;
+
+

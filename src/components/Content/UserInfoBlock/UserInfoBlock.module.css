@@ -1,0 +1,10 @@
+.userInfoBlock {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+}
+
+.userInfoBlock ul li {
+    padding: 5px 0;
+    color: white;
+}
