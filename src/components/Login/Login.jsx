@@ -14,8 +14,10 @@ function Login() {
 
     const isAuth = useSelector(state => state.auth.isAuth)
 
+    const captchaUrl = useSelector(state => state.auth.captchaUrl)
+
     const onSubmit = (formData) => {
-        dispatch(login(formData.email, formData.password,formData.rememberMe))
+        dispatch(login(formData.email, formData.password, formData.rememberMe, formData.captcha))
     }
 
     if (isAuth) {
@@ -24,18 +26,21 @@ function Login() {
 
     return <div>
         <h1>Login</h1>
-        <LoginReduxForm onSubmit={onSubmit}/>
+        <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
     </div>
 }
 
 const maxLength40 = maxLengthCreator(40)
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit}>
             {createField('Email', 'email', [required, maxLength40], Input)}
             {createField('Password', 'password', [required, maxLength40], Input, {type: 'password'})}
             {createField(null, 'rememberMe', [], Input, {type: 'checkbox'}, 'remember me')}
+
+            {captchaUrl && <img src={captchaUrl}/>}
+            {captchaUrl && createField('Enter captcha', 'captcha', [required], Input, {})}
 
             {error && <div className={styles.formSummaryError}>
                 {error}
