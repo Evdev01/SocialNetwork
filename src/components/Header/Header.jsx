@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import styles from "./Header.module.css";
 import {NavLink} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import {setAuthData} from '../../redux/auth-reducer'
+import {logout, setAuthData} from '../../redux/auth-reducer'
 
 function Header() {
 
@@ -16,6 +16,10 @@ function Header() {
         dispatch(setAuthData())
     }, [])
 
+    const logOutProfile = () => {
+        dispatch(logout())
+    }
+
     return (
             <div className={styles.header}>
                 <div className={styles.headerInner}>
@@ -24,7 +28,7 @@ function Header() {
                     </div>
                     <div className={styles.headerLogin}>
                         {isAuth
-                            ? <div>{login}</div>
+                            ? <div>{login} - <button onClick={logOutProfile}>Log out</button></div>
                             : <NavLink to={'/login'}>Login</NavLink>
                         }
                     </div>
