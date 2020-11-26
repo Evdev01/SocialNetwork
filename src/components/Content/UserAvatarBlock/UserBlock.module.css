@@ -3,15 +3,19 @@
     flex-direction: column;
     display: flex;
     align-items: center;
-    width: 30%;
+    width: 35%;
     height: auto;
 }
 
-.avatarImg {
-    max-width: 150px;
+.avatarImg img {
+    max-width: 200px;
 }
 
 .avatarButton {
-    margin-top: 10px;
-    display: flex;
+    margin: 20px 0 0 120px;
 }
+
+.avatarButton input {
+}
+
+

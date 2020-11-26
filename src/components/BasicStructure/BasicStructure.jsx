@@ -21,7 +21,7 @@ const BasicStructure = () => {
 
                 <div className={styles.content}>
                     <Switch>
-                        <Route path='/profile'
+                        <Route path='/profile/:userId?'
                                render={() => <ProfilePage/>}/>
 
                         <Route path='/dialogs'
