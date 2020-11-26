@@ -1,0 +1,11 @@
+.profileStatus {
+    padding-top: 30px;
+}
+
+.profileStatus span {
+    color: white;
+}
+
+.profileStatus input {
+    color: black;
+}

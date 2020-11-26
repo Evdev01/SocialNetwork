@@ -21,7 +21,13 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
-    }
+    },
+    getStatusProfile(userId) {
+        return instance.get(`profile/status/` + userId)
+    },
+    updateStatusProfile(status) {
+        return instance.put(`profile/status`, {status})
+    },
 }
 
 

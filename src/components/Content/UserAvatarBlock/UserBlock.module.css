@@ -12,10 +12,11 @@
 }
 
 .avatarButton {
-    margin: 20px 0 0 120px;
+    margin: 20px 0 0 20px;
 }
 
 .avatarButton input {
+    color: white;
 }
 
 

@@ -2,8 +2,9 @@ import styles from './UserBlock.module.css'
 import React from 'react'
 import userPhoto from '../../../../src/assets/images/user.jpg'
 import Preloader from '../../../common/Preloader/Preloader'
+import ProfileStatus from './ProfileStatus'
 
-function UserAvatarBlock({profile, setPhotoProfile, isOwner}) {
+function UserAvatarBlock({profile, setPhotoProfile, isOwner, status, updateStatus}) {
 
 
 
@@ -24,6 +25,9 @@ function UserAvatarBlock({profile, setPhotoProfile, isOwner}) {
             </div>
             <div className={styles.avatarButton}>
                 {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/> }
+
+            <ProfileStatus status={status} updateStatus={updateStatus}/>
+
             </div>
         </div>
 
