@@ -1,0 +1,46 @@
+.contentInner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.avatarPhoto {
+    padding-top: 35px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 35%;
+    height: auto;
+}
+
+.infoAboutProfile {
+    padding-top: 35px;
+    width: 65%;
+    text-align: center;
+}
+
+.infoAboutProfile ul li {
+    color: white;
+}
+
+.avatarImg img {
+    max-width: 200px;
+}
+
+.avatarButton {
+    margin: 20px 0 0 20px;
+}
+
+.avatarButton input {
+    color: white;
+}
+
+.profileData button {
+    color: black;
+}
+
+.profilePageContacts {
+    padding-left: 35px;
+}
+

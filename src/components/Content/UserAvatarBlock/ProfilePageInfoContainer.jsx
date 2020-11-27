@@ -2,10 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {compose} from 'redux'
-import {getStatus, getUserProfile, setPhotoProfile, updateStatus} from '../../../redux/profile-reducer'
-import UserAvatarBlock from './UserAvatarBlock'
+import {getStatus, getUserProfile, saveProfile, setPhotoProfile, updateStatus} from '../../../redux/profile-reducer'
+import ProfilePageInfo from './ProfilePageInfo'
 
-class UserAvatarBlockContainer extends React.Component {
+class ProfilePageInfoContainer extends React.Component {
 
 
     refreshProfile() {
@@ -33,12 +33,13 @@ class UserAvatarBlockContainer extends React.Component {
 
     render() {
         return (
-            <UserAvatarBlock {...this.props}
+            <ProfilePageInfo {...this.props}
                              isOwner={!this.props.match.params.userId}
                              profile={this.props.profile}
                              getStatus={this.props.getStatus}
                              updateStatus={this.props.updateStatus}
                              status={this.props.status}
+                             saveProfile={this.props.saveProfile}
                              setPhotoProfile={this.props.setPhotoProfile}/>
         )
     }
@@ -54,9 +55,9 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {getUserProfile, setPhotoProfile, getStatus, updateStatus}),
+    connect(mapStateToProps, {getUserProfile, setPhotoProfile, getStatus, updateStatus, saveProfile}),
     withRouter
-)(UserAvatarBlockContainer)
+)(ProfilePageInfoContainer)
 
 
 

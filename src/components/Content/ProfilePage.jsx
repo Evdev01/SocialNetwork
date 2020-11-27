@@ -1,17 +1,10 @@
 import React from 'react'
-import styles from './ProfilePage.module.css'
-import UserInfoBlock from './UserInfoBlock/UserInfoBlock'
-import UserAvatarBlockContainer from './UserAvatarBlock/UserAvatarBlockContainer'
+import ProfilePageInfoContainer from './UserAvatarBlock/ProfilePageInfoContainer'
 
 function ProfilePage() {
 
     return (
-
-            <div className={styles.contentInner}>
-                <UserAvatarBlockContainer/>
-                <UserInfoBlock/>
-            </div>
-
+                <ProfilePageInfoContainer/>
     )
 }
 

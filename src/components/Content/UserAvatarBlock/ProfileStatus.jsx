@@ -25,7 +25,7 @@ function ProfileStatus(props) {
         <div className={styles.profileStatus}>
             {!editMode &&
             <div>
-                <span onClick={activatedEditMode}>{props.status || '-----'}</span>
+                <b>Status :</b> <span onClick={activatedEditMode}>{props.status || '-----'}</span>
             </div>
             }
             {editMode &&

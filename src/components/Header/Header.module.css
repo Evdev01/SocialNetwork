@@ -26,6 +26,10 @@
     color: white;
 }
 
+.headerLogin button {
+    color: black;
+}
+
 .headerLogin a {
     color: white;
     text-decoration: none;
