@@ -6,8 +6,8 @@ import Users from './Users'
 function UsersPage() {
 
     return (
-        <div className={styles.users}>
-            <Users/>
+        <div className={styles.usersPage}>
+                <Users/>
         </div>
     )
 }

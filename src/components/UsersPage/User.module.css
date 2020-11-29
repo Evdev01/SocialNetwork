@@ -1,6 +1,8 @@
-.userPhoto {
-    width: 100px;
-    height: 100px;
+.userAvatarInfo {
+    padding: 0 15px;
 }
 
-
+.userPhoto {
+    height: 120px;
+    width: 120px;
+}

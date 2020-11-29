@@ -1,28 +1,11 @@
-.usersBlock span {
-    cursor: pointer;
-}
-
-.users span {
-    color: white;
-}
-
-.users h1 {
-    color: white;
-}
-
-.usersCount {
+.usersPage {
     display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
-.currentPage {
-    font-weight: bold;
-}
-
-.userPhoto {
-    height: 100px;
-    width: 100px;
-}
-
-.userPhotoBlock {
-    margin: 20px 0;
+.usersBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
