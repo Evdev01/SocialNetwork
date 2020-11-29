@@ -10,13 +10,13 @@
     flex-direction: column;
     display: flex;
     align-items: center;
-    width: 35%;
+    width: 36%;
     height: auto;
 }
 
 .infoAboutProfile {
     padding-top: 35px;
-    width: 65%;
+    width: 64%;
     text-align: center;
 }
 
@@ -26,21 +26,74 @@
 
 .avatarImg img {
     max-width: 200px;
-}
-
-.avatarButton {
-    margin: 20px 0 0 20px;
+    margin-bottom: 20px;
 }
 
 .avatarButton input {
     color: white;
 }
 
-.profileData button {
-    color: black;
+.profileData {
+    width: 100%;
+    display: flex;
+}
+
+.profileData b {
+    color: white
 }
 
 .profilePageContacts {
-    padding-left: 35px;
+    margin: 5px 0;
+    padding-left: 10px;
+    text-align: left;
+    color: white;
 }
+
+.inputFile {
+    width: 200px;
+}
+
+.basicInformation {
+    width: 32%;
+    margin-top: 5px;
+    padding: 0 50px;
+}
+
+.profileContactsInformation {
+    width: 32%;
+    padding: 0 50px;
+}
+
+.profileContactsInformation h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.btnEditProfile {
+    margin-top: 20px;
+    width: 130px;
+    height: 48px;
+    border-radius: 24px;
+    border: 3px solid rgba(85, 132, 255, 0.1);
+    background-color: transparent;
+    color: white;
+}
+
+.btnEditProfile:hover {
+    cursor: pointer;
+    transition: all .7s;
+    border: 3px solid rgba(85, 132, 255, 0.9);
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
 

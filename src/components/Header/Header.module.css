@@ -22,15 +22,91 @@
     color: white;
 }
 
-.headerLogin {
-    color: white;
+.headerLogo a {
+    text-decoration: none;
 }
 
-.headerLogin button {
-    color: black;
+.headerLogin {
+    color: white;
 }
 
 .headerLogin a {
     color: white;
     text-decoration: none;
 }
+
+.btnLogin {
+    position: relative;
+}
+
+.btnLogin:before {
+    content: "";
+    bottom: 1%;
+    left: 0;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #fff;
+    transition: all 0.4s;
+}
+
+.btnLogin:hover:before {
+    width: 100%;
+}
+
+.btnLogin {
+    margin-left: 50px;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.24px;
+}
+
+.btnLogin:hover {
+    cursor: pointer;
+    color: aqua;
+}
+
+/*--------------------------------------*/
+
+.logOutProfile {
+    position: relative;
+    background-color: transparent;
+}
+
+.logOutProfile:before {
+    content: "";
+    bottom: 1%;
+    left: 0;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #fff;
+    transition: all 0.4s;
+}
+
+.logOutProfile:hover:before {
+    width: 100%;
+}
+
+.logOutProfile {
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.24px;
+}
+
+.logOutProfile:hover {
+    cursor: pointer;
+    color: red;
+}
+
+
+
+
+
+

@@ -37,8 +37,8 @@ function ProfilePageInfo({profile, setPhotoProfile, isOwner, status, updateStatu
                 <div className={styles.avatarImg}>
                     <img src={profile.photos.large || userPhoto} alt='Best avatar'/>
                 </div>
-                <div className={styles.avatarButton}>
-                    {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
+                <div>
+                    {isOwner && <input type={'file'} onChange={onMainPhotoSelected} className={styles.inputFile}/>}
 
                     <ProfileStatus status={status} updateStatus={updateStatus}/>
                 </div>
@@ -46,7 +46,9 @@ function ProfilePageInfo({profile, setPhotoProfile, isOwner, status, updateStatu
             <div className={styles.infoAboutProfile}>
                 {editMode
                     ? <ProfileDataFormRedux initialValues={profile} profile={profile} onSubmit={onSubmit}/>
-                    : <ProfileData profile={profile} isOwner={isOwner} goToEditMode={() => {setEditMode(true)}}/>
+                    : <ProfileData profile={profile} isOwner={isOwner} goToEditMode={() => {
+                        setEditMode(true)
+                    }}/>
                 }
             </div>
         </div>
@@ -57,25 +59,28 @@ function ProfilePageInfo({profile, setPhotoProfile, isOwner, status, updateStatu
 const ProfileData = ({profile, goToEditMode, isOwner}) => {
     return (
         <div className={styles.profileData}>
-            {isOwner && <div>
-                <button onClick={goToEditMode}>Edit</button>
+            <div className={styles.basicInformation}>
+
+                <div>
+                    <b>Full name</b>: {profile.fullName}
+                </div>
+                <div>
+                    <b>About me</b>: {profile.aboutMe}
+                </div>
+                <div>
+                    <b>Looking for a job</b>: {profile.lookingForAJob ? 'yes' : 'no'}
+                </div>
+                <div>
+                    <b>My professionl skilss</b>: {profile.lookingForAJobDescription}
+                </div>
+                {isOwner && <div>
+                    <button onClick={goToEditMode} className={styles.btnEditProfile}>Edit</button>
+                </div>
+                }
             </div>
-            }
-            <div>
-                <b>Full name</b>: {profile.fullName}
-            </div>
-            <div>
-                <b>About me</b>: {profile.aboutMe}
-            </div>
-            <div>
-                <b>Looking for a job</b>: {profile.lookingForAJob ? 'yes' : 'no'}
-            </div>
-            <div>
-                <b>My professionl skilss</b>: {profile.lookingForAJobDescription}
-            </div>
-            <div>
-                <b>Contatcs</b> {Object.keys(profile.contacts).map(key => {
-                    return <Contacts contactsValue={key} key={key} contactsKey={profile.contacts[key]}/>
+            <div className={styles.profileContactsInformation}>
+                <b><h1>Contatcs :</h1></b> {Object.keys(profile.contacts).map(key => {
+                return <Contacts contactsValue={key} key={key} contactsKey={profile.contacts[key]}/>
             })}
             </div>
         </div>

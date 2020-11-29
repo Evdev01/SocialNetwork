@@ -25,7 +25,6 @@ function Login() {
     }
 
     return <div>
-        <h1>Login</h1>
         <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
     </div>
 }
@@ -34,12 +33,12 @@ const maxLength40 = maxLengthCreator(40)
 
 const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.loginInputForm}>
             {createField('Email', 'email', [required, maxLength40], Input)}
             {createField('Password', 'password', [required, maxLength40], Input, {type: 'password'})}
             {createField(null, 'rememberMe', [], Input, {type: 'checkbox'}, 'remember me')}
 
-            {captchaUrl && <img src={captchaUrl}/>}
+            {captchaUrl && <img src={captchaUrl} alt={'loading'}/>}
             {captchaUrl && createField('Enter captcha', 'captcha', [required], Input, {})}
 
             {error && <div className={styles.formSummaryError}>

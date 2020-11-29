@@ -5,29 +5,34 @@ import {reduxForm} from 'redux-form'
 
 const ProfileDataForm = ({profile, handleSubmit}) => {
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <button>Save</button>
+        <form onSubmit={handleSubmit} className={styles.profileData}>
+            <div className={styles.basicInformation}>
+
+                <div className={styles.basicInformation}>
+                    <div>
+                        <b>Full name</b>: {createField('Full name', 'fullName', [], Input, {})}
+                    </div>
+                    <div>
+                        <b>About me</b>:
+                        {createField('About me', 'aboutMe', [], Input, {})}
+                    </div>
+                    <div>
+                        <b>Looking for a job</b>:
+                        {createField('Looking for a job', 'lookingForAJob', [], Input, {type: 'checkbox'})}
+                    </div>
+                    <div>
+                        <b>My professionl skilss</b>:
+                        {createField('My professionl skilss', 'lookingForAJobDescription', [], Input, {})}
+                    </div>
+                    <div>
+                        <button className={styles.btnEditProfile}>Save</button>
+                    </div>
+                </div>
             </div>
-            <div>
-                <b>Full name</b>: {createField('Full name', 'fullName', [], Input, {})}
-            </div>
-            <div>
-                <b>About me</b>:
-                {createField('About me', 'aboutMe', [], Input, {})}
-            </div>
-            <div>
-                <b>Looking for a job</b>:
-                {createField('Looking for a job', 'lookingForAJob', [], Input, {type: 'checkbox'})}
-            </div>
-            <div>
-                <b>My professionl skilss</b>:
-                {createField('My professionl skilss', 'lookingForAJobDescription', [], Input, {})}
-            </div>
-            <div>
-                <b>Contacts</b>: {Object.keys(profile.contacts).map(key => {
+            <div className={styles.profileContactsInformation}>
+                <b><h1>Contacts</h1></b>: {Object.keys(profile.contacts).map(key => {
                 return <div key={key} className={styles.contact}>
-                    <b>{key}: {createField(key, "contacts." + key, [], Input)}</b>
+                    <b>{key}: {createField(key, 'contacts.' + key, [], Input)}</b>
                 </div>
             })}
             </div>

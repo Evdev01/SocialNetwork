@@ -24,12 +24,12 @@ function Header() {
             <div className={styles.header}>
                 <div className={styles.headerInner}>
                     <div className={styles.headerLogo}>
-                        <h1>VKK</h1>
+                        <NavLink to={'/profile'}>VKK</NavLink>
                     </div>
                     <div className={styles.headerLogin}>
                         {isAuth
-                            ? <div>{login} - <button onClick={logOutProfile}>Log out</button></div>
-                            : <NavLink to={'/login'}>Login</NavLink>
+                            ? <div>{login} - <button onClick={logOutProfile} className={styles.logOutProfile}>Log out</button></div>
+                            : <NavLink to={'/login'}><div className={styles.btnLogin}>Login</div></NavLink>
                         }
                     </div>
                 </div>

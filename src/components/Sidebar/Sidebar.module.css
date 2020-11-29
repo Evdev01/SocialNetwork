@@ -28,4 +28,5 @@
 
 .sidebarItem a.activeLink {
     font-weight: bold;
+    color: aqua;
 }
