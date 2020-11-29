@@ -1,3 +1,28 @@
+.usersBlock span {
+    cursor: pointer;
+}
+
+.users span {
+    color: white;
+}
+
 .users h1 {
     color: white;
+}
+
+.usersCount {
+    display: flex;
+}
+
+.currentPage {
+    font-weight: bold;
+}
+
+.userPhoto {
+    height: 100px;
+    width: 100px;
+}
+
+.userPhotoBlock {
+    margin: 20px 0;
 }
