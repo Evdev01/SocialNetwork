@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styles from './BasicStructure.module.css'
 import Header from '../Header/Header'
 import Sidebar from '../Sidebar/Sidebar'
@@ -8,9 +8,25 @@ import Login from '../Login/Login'
 import DialogsPage from '../DialogsPage/DialogsPage'
 import UsersPage from '../UsersPage/UsersPage'
 import SettingsPage from '../SettingsPage/SettingsPage'
+import {useDispatch, useSelector} from 'react-redux'
+import Preloader from '../../common/Preloader/Preloader'
+import {initializedApp} from '../../redux/app-reducer'
 
 
-const BasicStructure = () => {
+function BasicStructure() {
+    
+    const initialized = useSelector(state => state.app.initialized)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(initializedApp())
+    })
+
+    if (!initialized) {
+        return <Preloader/>
+    }
+    
     return (
         <div className={styles.wrapper}>
             <div className={styles.wrapperInner}>

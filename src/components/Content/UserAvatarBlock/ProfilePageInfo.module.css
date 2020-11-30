@@ -56,12 +56,12 @@
 .basicInformation {
     width: 32%;
     margin-top: 5px;
-    padding: 0 50px;
+    padding: 0 20px;
 }
 
 .profileContactsInformation {
     width: 32%;
-    padding: 0 50px;
+    padding: 0 20px;
 }
 
 .profileContactsInformation h1 {
@@ -81,7 +81,6 @@
 }
 
 .btnEditProfile:hover {
-    cursor: pointer;
     transition: all .7s;
     border: 3px solid rgba(85, 132, 255, 0.9);
     cursor: pointer;

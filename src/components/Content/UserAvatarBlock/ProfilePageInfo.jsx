@@ -4,8 +4,9 @@ import userPhoto from '../../../../src/assets/images/user.jpg'
 import Preloader from '../../../common/Preloader/Preloader'
 import ProfileStatus from './ProfileStatus'
 import ProfileDataFormRedux from './ProfileDataForm'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {saveProfile} from '../../../redux/profile-reducer'
+import {Redirect} from 'react-router-dom'
 
 function ProfilePageInfo({profile, setPhotoProfile, isOwner, status, updateStatus}) {
 
@@ -13,6 +14,8 @@ function ProfilePageInfo({profile, setPhotoProfile, isOwner, status, updateStatu
     let [editMode, setEditMode] = useState(false)
 
     const dispatch = useDispatch()
+    
+    const isAuth = useSelector(state => state.auth.isAuth)
 
 
     if (!profile) {
@@ -28,6 +31,10 @@ function ProfilePageInfo({profile, setPhotoProfile, isOwner, status, updateStatu
     const onSubmit = (formData) => {
         dispatch(saveProfile(formData))
         setEditMode(false)
+    }
+
+    if (!isAuth) {
+        return <Redirect to={'/profile'}/>
     }
 
 
@@ -55,6 +62,7 @@ function ProfilePageInfo({profile, setPhotoProfile, isOwner, status, updateStatu
 
     )
 }
+
 
 const ProfileData = ({profile, goToEditMode, isOwner}) => {
     return (
@@ -88,7 +96,7 @@ const ProfileData = ({profile, goToEditMode, isOwner}) => {
 }
 
 const Contacts = ({contactsValue, contactsKey}) => {
-    return <div className={styles.profilePageContacts}><b>{contactsValue}:</b>{contactsKey}</div>
+    return <div className={styles.profilePageContacts}><b>{contactsValue}: </b>{contactsKey}</div>
 }
 
 
