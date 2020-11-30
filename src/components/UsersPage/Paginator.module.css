@@ -7,9 +7,36 @@
     border: 1px solid grey;
     font-weight: bold;
     cursor: pointer;
+    color: white;
+    margin: 0 2px;
 }
 
-.pageNumber.selectedPage {
-    /*font-weight: bold;*/
-    border-color: black;
+.pageNumber:hover {
+    color: aqua;
+}
+
+.nextButtonPaginator {
+    margin: 0 0 0 10px;
+    padding: 2px;
+    background-color: transparent;
+    color: white;
+    opacity: .7;
+}
+
+.nextButtonPaginator:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.prevButtonPaginator {
+    margin: 0 10px 0 0;
+    padding: 2px;
+    background-color: transparent;
+    color: white;
+    opacity: .7;
+}
+
+.prevButtonPaginator:hover {
+    opacity: 1;
+    cursor: pointer;
 }

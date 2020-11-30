@@ -6,3 +6,64 @@
     height: 120px;
     width: 120px;
 }
+
+
+.userFollow {
+    color: white;
+    padding: 2px 15px;
+    margin: 5px 0;
+    background-color: transparent;
+    opacity: .6;
+}
+
+.userFollow:hover {
+    cursor: pointer;
+    color: aqua;
+    opacity: 1;
+
+    transition: all .2s;
+}
+
+
+
+.userUnfollow {
+    color: white;
+    padding: 2px 15px;
+    margin: 5px 0;
+    background-color: transparent;
+    opacity: .6;
+}
+
+.userUnfollow:hover {
+    cursor: pointer;
+    color: red;
+    opacity: 1;
+
+    transition: all .2s;
+}
+
+.userName div {
+    margin-bottom: 10px;
+}
+
+.userName b {
+    opacity: .7;
+}
+
+.userName b:hover {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

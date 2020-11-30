@@ -26,11 +26,11 @@ function User({user}) {
 
             <div>
                 {user.followed
-                    ? <button disabled={followingInProgress.some(id => id === user.id)}
+                    ? <button className={styles.userUnfollow} disabled={followingInProgress.some(id => id === user.id)}
                               onClick={() => {
                                   dispatch(unfollow(user.id))
                               }}>Unfollow</button>
-                    : <button disabled={followingInProgress.some(id => id === user.id)}
+                    : <button className={styles.userFollow} disabled={followingInProgress.some(id => id === user.id)}
                               onClick={() => {
                                   dispatch(follow(user.id))
                               }}>Follow</button>
@@ -38,7 +38,7 @@ function User({user}) {
             </div>
 
             <div>
-                <div>
+                <div className={styles.userName}>
                     <div><b>Name: </b>{user.name}</div>
                     <div><b>Status: </b> {user.status || '-----'}</div>
                 </div>
