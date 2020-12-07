@@ -9,7 +9,10 @@ import styles from './UsersPage.module.css'
 
 function Users() {
 
+
+
     const dispatch = useDispatch()
+
 
     const {users, totalCount, pageSize, currentPage, isFetching} = useSelector(({usersPage}) => {
         return {
@@ -35,6 +38,8 @@ function Users() {
     const onPageChanged = (pageNumber) => {
         dispatch(getUsers(pageNumber, pageSize))
     }
+
+
 
     return <div>
         {isFetching ? <Preloader/> : null}

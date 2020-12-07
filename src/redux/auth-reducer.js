@@ -1,9 +1,9 @@
 import {authAPI, securityAPI} from '../Api/api'
 import {stopSubmit} from 'redux-form'
 
-const SET_AUTH = 'auth/SET_AUTH'
-const GET_USER_DATA = 'auth/GET_USER_DATA'
-const GET_CAPTCHA_URL = 'auth/GET_CAPTCHA_URL'
+const SET_AUTH = 'auth-reducer/SET_AUTH'
+const GET_USER_DATA = 'auth-reducer/GET_USER_DATA'
+const GET_CAPTCHA_URL = 'auth-reducer/GET_CAPTCHA_URL'
 
 
 const defaultState = {
@@ -37,6 +37,8 @@ export const setAuthData = () => async (dispatch) => {
     let response = await authAPI.me()
 
     if (response.data.resultCode === 0) {
+
+
         let {id, login, email} = response.data.data
         dispatch(setAuthSuccess(id, email, login, true))
     }

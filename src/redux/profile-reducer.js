@@ -1,8 +1,8 @@
 import {profileAPI} from '../Api/api'
 
-const SET_PHOTO_PROFILE = 'profile/SET_PHOTO_PROFILE'
-const SET_USER_PROFILE = 'profile/SET_USER_PROFILE'
-const GET_USER_STATUS = 'profile/GET_USER_STATUS'
+const SET_PHOTO_PROFILE = 'profile-reducer/SET_PHOTO_PROFILE'
+const SET_USER_PROFILE = 'profile-reducer/SET_USER_PROFILE'
+const GET_USER_STATUS = 'profile-reducer/GET_USER_STATUS'
 
 
 const defaultState = {
@@ -19,23 +19,19 @@ export default function profileReducer(state = defaultState, action) {
                 profile: {...state.profile, photos: action.photos}
             }
         case SET_USER_PROFILE :
-            return {
-                ...state,
-                profile: action.profile
-            }
         case GET_USER_STATUS :
             return {
                 ...state,
-                status: action.status
+                ...action.payload
             }
         default:
             return state
     }
 }
 
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, payload: {profile}})
 export const setPhotoProfileSuccess = (photos) => ({type: SET_PHOTO_PROFILE, photos})
-export const getStatusProfileSuccess = (status) => ({type: GET_USER_STATUS, status})
+export const getStatusProfileSuccess = (status) => ({type: GET_USER_STATUS, payload: {status}})
 
 
 
@@ -48,6 +44,7 @@ export const getStatus = (userId) => async (dispatch) => {
     const response = await profileAPI.getStatusProfile(userId)
     dispatch(getStatusProfileSuccess(response.data))
 }
+
 
 export const updateStatus = (status) => async (dispatch) => {
     const response = await profileAPI.updateStatusProfile(status)

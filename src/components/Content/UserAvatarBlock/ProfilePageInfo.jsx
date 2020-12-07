@@ -14,7 +14,7 @@ function ProfilePageInfo({profile, setPhotoProfile, isOwner, status, updateStatu
     let [editMode, setEditMode] = useState(false)
 
     const dispatch = useDispatch()
-    
+
     const isAuth = useSelector(state => state.auth.isAuth)
 
 

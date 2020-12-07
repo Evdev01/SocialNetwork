@@ -26,6 +26,8 @@ function BasicStructure() {
     if (!initialized) {
         return <Preloader/>
     }
+
+
     
     return (
         <div className={styles.wrapper}>

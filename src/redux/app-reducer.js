@@ -1,6 +1,6 @@
 import {setAuthData} from './auth-reducer'
 
-const INITIALIZED_SUCCESS = 'profile/INITIALIZED_SUCCESS'
+const INITIALIZED_SUCCESS = 'app-reducer/INITIALIZED_SUCCESS'
 
 
 const defaultState = {

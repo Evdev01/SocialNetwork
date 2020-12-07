@@ -1,13 +1,13 @@
 import {usersAPI} from '../Api/api'
 
 
-const FOLLOW = 'profile/FOLLOW'
-const UNFOLLOW = 'profile/UNFOLLOW'
-const SET_USERS = 'profile/SET_USERS'
-const SET_TOTAL_USERS = 'profile/SET_TOTAL_USERS'
-const SET_CURRENT_PAGE = 'profile/SET_CURRENT_PAGE'
-const TOGGLE_IS_FETCHING = 'profile/TOGGLE_IS_FETCHING'
-const TOGGLE_IS_FOLLOWING_PROGRESS = 'profile/TOGGLE_IS_FOLLOWING_PROGRESS'
+const FOLLOW = 'users-reducer/FOLLOW'
+const UNFOLLOW = 'users-reducer/UNFOLLOW'
+const SET_USERS = 'users-reducer/SET_USERS'
+const SET_TOTAL_USERS = 'users-reducer/SET_TOTAL_USERS'
+const SET_CURRENT_PAGE = 'users-reducer/SET_CURRENT_PAGE'
+const TOGGLE_IS_FETCHING = 'users-reducer/TOGGLE_IS_FETCHING'
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'users-reducer/TOGGLE_IS_FOLLOWING_PROGRESS'
 
 
 const defaultState = {
@@ -73,7 +73,11 @@ export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, payload
 export const setUserTotalCount = (totalCount) => ({type: SET_TOTAL_USERS, payload: {totalCount}})
 export const setToggleFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, payload: {isFetching}})
 
-export const toggleFollowingInProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId})
+export const toggleFollowingInProgress = (isFetching, userId) => ({
+    type: TOGGLE_IS_FOLLOWING_PROGRESS,
+    isFetching,
+    userId
+})
 
 
 export const getUsers = (currentPage, pageSize) => async (dispatch) => {
@@ -84,11 +88,15 @@ export const getUsers = (currentPage, pageSize) => async (dispatch) => {
 
     let data = await usersAPI.getUsers(currentPage, pageSize)
 
+    console.log(data)
+
 
     dispatch(setUsers(data.items))
     dispatch(setUserTotalCount(data.totalCount))
     dispatch(setToggleFetching(false))
+
 }
+
 
 export const follow = (userId) => {
     return (dispatch) => {
