@@ -21,8 +21,8 @@ const ProfileDataForm = ({profile, handleSubmit}) => {
                         {createField('Looking for a job', 'lookingForAJob', [], Input, {type: 'checkbox'})}
                     </div>
                     <div>
-                        <b>My professionl skilss</b>:
-                        {createField('My professionl skilss', 'lookingForAJobDescription', [], Input, {})}
+                        <b>My professional skills</b>:
+                        {createField('My professional skills', 'lookingForAJobDescription', [], Input, {})}
                     </div>
                     <div>
                         <button className={styles.btnEditProfile}>Save</button>
