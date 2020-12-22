@@ -33,7 +33,7 @@ export const initializedApp = () => async (dispatch: any) => {
 
     Promise.all([promise])
         .then(() => {
-            dispatch(actions.initializedSuccess())
+            dispatch(actions.initializedSuccess());
         })
 }
 

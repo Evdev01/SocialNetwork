@@ -1,6 +1,7 @@
-import {usersAPI} from '../Api/api'
 import {BaseThunkType, InferActionsTypes} from './redux-reducers'
 import {UserType} from '../types/types'
+import {usersAPI} from '../Api/users-api'
+import {ResultCodesEnum} from '../Api/api'
 
 
 const defaultState = {
@@ -102,7 +103,7 @@ export const follow = (userId: number): ThunkType => {
     return async (dispatch) => {
         dispatch(actions.toggleFollowingInProgress(true, userId))
        const response = await usersAPI.follow(userId)
-                if (response.data.resultCode === 0) {
+                if (response.resultCode === ResultCodesEnum.Success) {
                     dispatch(actions.followSuccess(userId))
                 }
                 dispatch(actions.toggleFollowingInProgress(false, userId))
@@ -113,7 +114,7 @@ export const unfollow = (userId: number): ThunkType => {
     return async (dispatch) => {
         dispatch(actions.toggleFollowingInProgress(true, userId))
         const response = await usersAPI.unfollow(userId)
-                if (response.data.resultCode === 0) {
+                if (response.resultCode === ResultCodesEnum.Success) {
                     dispatch(actions.unfollowSuccess(userId))
                 }
                 dispatch(actions.toggleFollowingInProgress(false, userId))
