@@ -5,22 +5,29 @@ import Paginator from './Paginator'
 import User from './User'
 import Preloader from '../../common/Preloader/Preloader'
 import styles from './UsersPage.module.css'
+import {UserType} from '../../types/types'
+import {AppStateTypes} from '../../redux/redux-reducers'
 
 
 function Users() {
 
 
-
     const dispatch = useDispatch()
 
-
-    const {users, totalCount, pageSize, currentPage, isFetching} = useSelector(({usersPage}) => {
+    interface StateProps {
+        users: Array<UserType>
+        totalCount: number
+        pageSize: number
+        currentPage: number
+        isFetching: boolean
+    }
+    const {users, totalCount, pageSize, currentPage, isFetching} = useSelector<AppStateTypes, StateProps>( (state: AppStateTypes) => {
         return {
-            users: usersPage.users,
-            totalCount: usersPage.totalCount,
-            pageSize: usersPage.pageSize,
-            currentPage: usersPage.currentPage,
-            isFetching: usersPage.isFetching,
+            users: state.usersPage.users,
+            totalCount: state.usersPage.totalCount,
+            pageSize: state.usersPage.pageSize,
+            currentPage: state.usersPage.currentPage,
+            isFetching: state.usersPage.isFetching
         }
     })
 
@@ -35,16 +42,15 @@ function Users() {
         pages.push(i)
     }
 
-    const onPageChanged = (pageNumber) => {
+    const onPageChanged = (pageNumber: number) => {
         dispatch(getUsers(pageNumber, pageSize))
     }
-
 
 
     return <div>
         {isFetching ? <Preloader/> : null}
 
-        <Paginator currentPage={currentPage} onPageChanged={onPageChanged}
+        <Paginator onPageChanged={onPageChanged}
                    totalCount={totalCount} pageSize={pageSize}/>
         <div className={styles.usersBlock}>
             {
@@ -56,6 +62,7 @@ function Users() {
         </div>
     </div>
 }
+
 export default Users
 
 

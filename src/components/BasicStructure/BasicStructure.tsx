@@ -11,11 +11,12 @@ import SettingsPage from '../SettingsPage/SettingsPage'
 import {useDispatch, useSelector} from 'react-redux'
 import Preloader from '../../common/Preloader/Preloader'
 import {initializedApp} from '../../redux/app-reducer'
+import {AppStateTypes} from '../../redux/redux-reducers'
 
 
 function BasicStructure() {
     
-    const initialized = useSelector(state => state.app.initialized)
+    const initialized = useSelector((state: AppStateTypes) => state.app.initialized)
 
     const dispatch = useDispatch()
 

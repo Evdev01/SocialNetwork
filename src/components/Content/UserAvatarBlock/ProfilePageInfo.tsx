@@ -1,5 +1,5 @@
 import styles from './ProfilePageInfo.module.css'
-import React, {useState} from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import userPhoto from '../../../../src/assets/images/user.jpg'
 import Preloader from '../../../common/Preloader/Preloader'
 import ProfileStatus from './ProfileStatus'
@@ -7,28 +7,39 @@ import ProfileDataFormRedux from './ProfileDataForm'
 import {useDispatch, useSelector} from 'react-redux'
 import {saveProfile} from '../../../redux/profile-reducer'
 import {Redirect} from 'react-router-dom'
+import {ContactsType, ProfileType} from '../../../types/types'
+import {AppStateTypes} from '../../../redux/redux-reducers'
 
-function ProfilePageInfo({profile, setPhotoProfile, isOwner, status, updateStatus}) {
+
+type PropsType = {
+    profile: ProfileType
+    setPhotoProfile: (photo: File) => void
+    isOwner: boolean
+    status: string
+    updateStatus: (status: string) => void
+}
+
+const ProfilePageInfo: React.FC<PropsType> =({profile, setPhotoProfile, isOwner, status, updateStatus}) => {
 
 
     let [editMode, setEditMode] = useState(false)
 
     const dispatch = useDispatch()
 
-    const isAuth = useSelector(state => state.auth.isAuth)
+    const isAuth = useSelector((state: AppStateTypes) => state.auth.isAuth)
 
 
     if (!profile) {
         return <Preloader/>
     }
 
-    const onMainPhotoSelected = (e) => {
-        if (e.target.files.length) {
+    const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files.length) {
             setPhotoProfile(e.target.files[0])
         }
     }
 
-    const onSubmit = (formData) => {
+    const onSubmit = (formData: ProfileType) => {
         dispatch(saveProfile(formData))
         setEditMode(false)
     }
@@ -63,8 +74,13 @@ function ProfilePageInfo({profile, setPhotoProfile, isOwner, status, updateStatu
     )
 }
 
+type ProfileDataPropsType = {
+    profile: ProfileType
+    goToEditMode: () => void
+    isOwner: boolean
+}
 
-const ProfileData = ({profile, goToEditMode, isOwner}) => {
+const ProfileData: React.FC<ProfileDataPropsType> = ({profile, goToEditMode, isOwner}) => {
     return (
         <div className={styles.profileData}>
             <div className={styles.basicInformation}>
@@ -79,7 +95,7 @@ const ProfileData = ({profile, goToEditMode, isOwner}) => {
                     <b>Looking for a job</b>: {profile.lookingForAJob ? 'yes' : 'no'}
                 </div>
                 <div>
-                    <b>My professionl skilss</b>: {profile.lookingForAJobDescription}
+                    <b>My professional skills</b>: {profile.lookingForAJobDescription}
                 </div>
                 {isOwner && <div>
                     <button onClick={goToEditMode} className={styles.btnEditProfile}>Edit</button>
@@ -87,15 +103,20 @@ const ProfileData = ({profile, goToEditMode, isOwner}) => {
                 }
             </div>
             <div className={styles.profileContactsInformation}>
-                <b><h1>Contatcs :</h1></b> {Object.keys(profile.contacts).map(key => {
-                return <Contacts contactsValue={key} key={key} contactsKey={profile.contacts[key]}/>
+                <b><h1>Contacts :</h1></b> {Object.keys(profile.contacts).map(key => {
+                return <Contacts contactsValue={key} key={key} contactsKey={profile.contacts[key as keyof ContactsType]}/>
             })}
             </div>
         </div>
     )
 }
 
-const Contacts = ({contactsValue, contactsKey}) => {
+type ContactsPropsType = {
+    contactsValue: string
+    contactsKey: string
+}
+
+const Contacts: React.FC<ContactsPropsType> = ({contactsValue, contactsKey}) => {
     return <div className={styles.profilePageContacts}><b>{contactsValue}: </b>{contactsKey}</div>
 }
 

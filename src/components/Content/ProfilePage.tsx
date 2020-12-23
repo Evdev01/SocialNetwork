@@ -4,7 +4,7 @@ import ProfilePageInfoContainer from './UserAvatarBlock/ProfilePageInfoContainer
 function ProfilePage() {
 
     return (
-                <ProfilePageInfoContainer/>
+        <ProfilePageInfoContainer/>
     )
 }
 

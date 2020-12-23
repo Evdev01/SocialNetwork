@@ -1,28 +1,35 @@
 import React from 'react'
 import styles from './ProfilePageInfo.module.css'
-import {createField, Input} from '../../../common/FormsControls'
-import {reduxForm} from 'redux-form'
+import {createField, GetStringKeys, Input} from '../../../common/FormsControls'
+import {InjectedFormProps, reduxForm} from 'redux-form'
+import {ProfileType} from '../../../types/types'
 
-const ProfileDataForm = ({profile, handleSubmit}) => {
+type PropsType = {
+    profile:ProfileType
+}
+
+type ProfileTypeKeys = GetStringKeys<ProfileType>
+
+const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, PropsType> & PropsType> = ({profile, handleSubmit}) => {
     return (
         <form onSubmit={handleSubmit} className={styles.profileData}>
             <div className={styles.basicInformation}>
 
                 <div className={styles.basicInformation}>
                     <div>
-                        <b>Full name</b>: {createField('Full name', 'fullName', [], Input, {})}
+                        <b>Full name</b>: {createField<ProfileTypeKeys>('Full name', 'fullName', [], Input, {})}
                     </div>
                     <div>
                         <b>About me</b>:
-                        {createField('About me', 'aboutMe', [], Input, {})}
+                        {createField<ProfileTypeKeys>('About me', 'aboutMe', [], Input, {})}
                     </div>
                     <div>
                         <b>Looking for a job</b>:
-                        {createField('Looking for a job', 'lookingForAJob', [], Input, {type: 'checkbox'})}
+                        {createField<ProfileTypeKeys>('Looking for a job', 'lookingForAJob', [], Input, {type: 'checkbox'})}
                     </div>
                     <div>
                         <b>My professional skills</b>:
-                        {createField('My professional skills', 'lookingForAJobDescription', [], Input, {})}
+                        {createField<ProfileTypeKeys>('My professional skills', 'lookingForAJobDescription', [], Input, {})}
                     </div>
                     <div>
                         <button className={styles.btnEditProfile}>Save</button>
@@ -40,7 +47,7 @@ const ProfileDataForm = ({profile, handleSubmit}) => {
     )
 }
 
-const ProfileDataFormRedux = reduxForm({
+const ProfileDataFormRedux = reduxForm<ProfileType, PropsType>({
     form: 'profile-edit'
 })(ProfileDataForm)
 

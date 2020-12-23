@@ -3,14 +3,15 @@ import styles from "./Header.module.css";
 import {NavLink} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {logout, setAuthData} from '../../redux/auth-reducer'
+import {AppStateTypes} from '../../redux/redux-reducers'
 
 function Header() {
 
     const dispatch = useDispatch()
     
-    const isAuth = useSelector(state => state.auth.isAuth)
+    const isAuth = useSelector((state: AppStateTypes) => state.auth.isAuth)
 
-    const login = useSelector(state => state.auth.login)
+    const login = useSelector((state: AppStateTypes) => state.auth.login)
 
     useEffect(() => {
         dispatch(setAuthData())

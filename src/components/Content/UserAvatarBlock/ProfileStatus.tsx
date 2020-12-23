@@ -1,8 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import styles from './ProfileStatus.module.css'
 
+type PropsType = {
+    status: string
+    updateStatus: (status: string) => void
+}
 
-function ProfileStatus(props) {
+
+const ProfileStatus: React.FC<PropsType> = (props) => {
 
 
     let [editMode, setEditMode] = useState(false)
@@ -21,7 +26,7 @@ function ProfileStatus(props) {
         props.updateStatus(status)
     }
 
-    const onChangeStatus = (e) => {
+    const onChangeStatus = (e: React.FormEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value)
     }
 

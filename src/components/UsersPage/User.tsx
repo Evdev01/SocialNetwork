@@ -4,14 +4,20 @@ import {NavLink} from 'react-router-dom'
 import userPhoto from '../../assets/images/user.jpg'
 import {useDispatch, useSelector} from 'react-redux'
 import {follow, unfollow} from '../../redux/users-reducer'
+import {AppStateTypes} from '../../redux/redux-reducers'
+import {UserType} from '../../types/types'
 
 
-function User({user}) {
+type PropsType = {
+    user: UserType
+}
+
+const User: React.FC<PropsType> = ({user}) => {
 
 
     const dispatch = useDispatch()
 
-    const followingInProgress = useSelector(state => state.usersPage.followingInProgress)
+    const followingInProgress = useSelector((state: AppStateTypes) => state.usersPage.followingInProgress)
 
     return (
         <div className={styles.userAvatarInfo}>

@@ -1,12 +1,12 @@
-type Contacts = {
-    github: string | null
-    vk: string | null
-    facebook: string | null
-    instagram: string | null
-    twitter: string | null
-    website: string | null
-    youtube: string | null
-    mainLink: string | null
+export type ContactsType = {
+    github: string
+    vk: string
+    facebook: string
+    instagram: string
+    twitter: string
+    website: string
+    youtube: string
+    mainLink: string
 }
 
 export type ProfileType = {
@@ -14,7 +14,9 @@ export type ProfileType = {
     lookingForAJob: boolean
     lookingForAJobDescription: string | null
     fullName: string | null
-    contacts: Contacts
+    contacts: ContactsType
+    photos: PhotosType
+    aboutMe: string
 }
 
 export type PhotosType = {

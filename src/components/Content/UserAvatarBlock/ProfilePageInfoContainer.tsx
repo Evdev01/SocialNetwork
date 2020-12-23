@@ -1,23 +1,47 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {compose} from 'redux'
 import {getStatus, getUserProfile, saveProfile, setPhotoProfile, updateStatus} from '../../../redux/profile-reducer'
 import ProfilePageInfo from './ProfilePageInfo'
+import {AppStateTypes} from '../../../redux/redux-reducers'
+import {ProfileType} from '../../../types/types'
 
-class ProfilePageInfoContainer extends React.Component {
+type MapPropsType = ReturnType<typeof mapStateToProps>
 
+type DispatchPropsType = {
+    getUserProfile: (userId: number) => void
+    setPhotoProfile: (file: File) => void
+    getStatus: (userId: number) => void
+    updateStatus: (status: string) => void
+    saveProfile: (profile: ProfileType) => Promise<any>
+    profile: PropsType
+    status: (status: string) => void
+}
+
+type PathParamsType = {
+    userId: string
+}
+
+type PropsType = MapPropsType & DispatchPropsType & RouteComponentProps<PathParamsType>
+
+class ProfilePageInfoContainer extends React.Component<PropsType> {
 
     refreshProfile() {
-        let userId = this.props.match.params.userId
+        let userId: number | null = +this.props.match.params.userId
         if (!userId) {
             userId = this.props.authorizedUserId
             if (!userId) {
                 this.props.history.push('/login')
             }
         }
-        this.props.getUserProfile(userId)
-        this.props.getStatus(userId);
+        if (!userId) {
+            console.error('ID should exists in URI params or in state (\'authorizedUserId\')')
+        } else {
+            this.props.getUserProfile(userId)
+            this.props.getStatus(userId)
+
+        }
     }
 
     componentDidMount() {
@@ -25,7 +49,7 @@ class ProfilePageInfoContainer extends React.Component {
         this.refreshProfile()
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate(prevProps: PropsType, prevState: PropsType) {
         if (this.props.match.params.userId !== prevProps.match.params.userId) {
             this.refreshProfile()
         }
@@ -36,16 +60,14 @@ class ProfilePageInfoContainer extends React.Component {
             <ProfilePageInfo {...this.props}
                              isOwner={!this.props.match.params.userId}
                              profile={this.props.profile}
-                             getStatus={this.props.getStatus}
                              updateStatus={this.props.updateStatus}
                              status={this.props.status}
-                             saveProfile={this.props.saveProfile}
                              setPhotoProfile={this.props.setPhotoProfile}/>
         )
     }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateTypes) => {
     return ({
         profile: state.pageSize.profile,
         status: state.pageSize.status,
@@ -54,7 +76,7 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default compose(
+export default compose<React.ComponentType>(
     connect(mapStateToProps, {getUserProfile, setPhotoProfile, getStatus, updateStatus, saveProfile}),
     withRouter
 )(ProfilePageInfoContainer)
